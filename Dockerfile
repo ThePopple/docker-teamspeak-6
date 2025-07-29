@@ -1,15 +1,14 @@
 FROM ich777/debian-baseimage
 
 LABEL org.opencontainers.image.authors="admin@minenet.at"
-LABEL org.opencontainers.image.source="https://github.com/ich777/docker-teamspeak"
+LABEL org.opencontainers.image.source="https://github.com/popplej/docker-teamspeak-6"
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends curl jq bzip2 && \
+	apt-get -y install --no-install-recommends curl jq bzip2 wget && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/teamspeak"
-ENV TS3SERVER_LICENSE=""
-ENV ENABLE_TSDNS=""
+ENV TSSERVER_LICENSE_ACCEPTED=""
 ENV EXTRA_START_PARAMS=""
 ENV UMASK=000
 ENV UID=99
@@ -25,7 +24,7 @@ RUN mkdir $DATA_DIR && \
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
 
-EXPOSE 10011
+EXPOSE 10080
 EXPOSE 30033
 EXPOSE 9987/udp
 

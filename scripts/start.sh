@@ -26,8 +26,8 @@ chown -R ${UID}:${GID} ${DATA_DIR}
 
 echo "---Starting...---"
 term_handler() {
-	kill -SIGTERM "$(pidof ts3server)"
-	tail --pid="$(pidof ts3server)" -f 2>/dev/null
+	kill -SIGTERM "$(pidof tsserver)"
+	tail --pid="$(pidof tsserver)" -f 2>/dev/null
 	exit 143;
 }
 
